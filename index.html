@@ -13,12 +13,15 @@
     });
 
     var channel = pusher.subscribe('my-channel');
+    alert("get elem")
     document.getElementById("elem").innerHTML = "init";
+    alert("got elem")
     channel.bind('my-event', function(data) {
       data = JSON.stringify(data);
       document.getElementById("elem").innerHTML = data;
       alert(data);
     });
+    alert("bound")
   </script>
 </head>
 <body>
