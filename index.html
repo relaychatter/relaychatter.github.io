@@ -1,16 +1,26 @@
-<html>
-  <head>
-		<title>Embedded example</title>
-	</head>
-  <body>
-  
-  <h1>The script element</h1>
-  
-  <p id="demo"></p>
-  
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
   <script>
-    document.getElementById("demo").innerHTML = "Hello JavaScript!";
-  </script> 
-  
-  </body>
-</html>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('c1e3fa933a9734845c74', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+</head>
+<body>
+  <h1>Pusher Test</h1>
+  <p>
+    Try publishing an event to channel <code>my-channel</code>
+    with event name <code>my-event</code>.
+  </p>
+</body>
