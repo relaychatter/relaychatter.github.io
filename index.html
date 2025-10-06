@@ -13,12 +13,14 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
+      data = JSON.stringify(data);
+      document.getElementById("elem").innerHTML = data;
+      alert(data);
     });
   </script>
 </head>
 <body>
-  <h1>Pusher Test</h1>
+  <h1 id="elem">Pusher Test</h1>
   <p>
     Try publishing an event to channel <code>my-channel</code>
     with event name <code>my-event</code>.
